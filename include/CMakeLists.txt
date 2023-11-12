@@ -1,11 +1,6 @@
-add_library(raylib_cpp INTERFACE)
-
-# Include Directory
-target_include_directories(raylib_cpp INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/)
-
-# Set the header files as install files.
-install(FILES
-    AudioDevice.hpp
+add_library(raylib_cpp 
+	INTERFACE
+	AudioDevice.hpp
     AudioStream.hpp
     BoundingBox.hpp
     Camera2D.hpp
@@ -43,5 +38,4 @@ install(FILES
     VrStereoConfig.hpp
     Wave.hpp
     Window.hpp
-    DESTINATION include
 )
