@@ -211,11 +211,12 @@ class Image : public ::Image {
      *
      * @see ::LoadImage()
      */
-    void Load(const std::string& fileName) {
+    bool Load(const std::string& fileName) {
         set(::LoadImage(fileName.c_str()));
-        if (!IsReady()) {
-            throw RaylibException("Failed to load Image from file: " + fileName);
-        }
+        //if (!IsReady()) {
+        //    throw RaylibException("Failed to load Image from file: " + fileName);
+        //}
+        return IsReady();
     }
 
     /**
@@ -225,11 +226,12 @@ class Image : public ::Image {
      *
      * @see ::LoadImageRaw()
      */
-    void Load(const std::string& fileName, int width, int height, int format, int headerSize) {
+    bool Load(const std::string& fileName, int width, int height, int format, int headerSize) {
         set(::LoadImageRaw(fileName.c_str(), width, height, format, headerSize));
-        if (!IsReady()) {
-            throw RaylibException("Failed to load Image from file: " + fileName);
-        }
+        //if (!IsReady()) {
+        //    throw RaylibException("Failed to load Image from file: " + fileName);
+        //}
+        return IsReady();
     }
 
     /**
@@ -239,11 +241,12 @@ class Image : public ::Image {
      *
      * @see ::LoadImageAnim()
      */
-    void Load(const std::string& fileName, int* frames) {
+    bool Load(const std::string& fileName, int* frames) {
         set(::LoadImageAnim(fileName.c_str(), frames));
-        if (!IsReady()) {
-            throw RaylibException("Failed to load Image from file: " + fileName);
-        }
+        //if (!IsReady()) {
+        //    throw RaylibException("Failed to load Image from file: " + fileName);
+        //}
+        return IsReady();
     }
 
     /**
@@ -253,14 +256,15 @@ class Image : public ::Image {
      *
      * @see ::LoadImageFromMemory()
      */
-    void Load(
+    bool Load(
             const std::string& fileType,
             const unsigned char *fileData,
             int dataSize) {
         set(::LoadImageFromMemory(fileType.c_str(), fileData, dataSize));
-        if (!IsReady()) {
-            throw RaylibException("Failed to load Image data with file type: " + fileType);
-        }
+        //if (!IsReady()) {
+        //    throw RaylibException("Failed to load Image data with file type: " + fileType);
+        //}
+        return IsReady();
     }
 
     /**
@@ -270,11 +274,12 @@ class Image : public ::Image {
      *
      * @see ::LoadImageFromTexture()
      */
-    void Load(const ::Texture2D& texture) {
+    bool Load(const ::Texture2D& texture) {
         set(::LoadImageFromTexture(texture));
-        if (!IsReady()) {
-            throw RaylibException("Failed to load Image from texture.");
-        }
+        //if (!IsReady()) {
+        //    throw RaylibException("Failed to load Image from texture.");
+        //}
+        return IsReady();
     }
 
     /**
@@ -292,10 +297,8 @@ class Image : public ::Image {
      *
      * @throws raylib::RaylibException Thrown if the image failed to load from the file.
      */
-    inline void Export(const std::string& fileName) const {
-        if (!::ExportImage(*this, fileName.c_str())) {
-            throw RaylibException(TextFormat("Failed to export Image to file: %s", fileName.c_str()));
-        }
+    inline bool Export(const std::string& fileName) const {
+        return ::ExportImage(*this, fileName.c_str());
     }
 
     /**
@@ -310,10 +313,8 @@ class Image : public ::Image {
      *
      * @throws raylib::RaylibException Thrown if the image failed to load from the file.
      */
-    inline void ExportAsCode(const std::string& fileName) const {
-        if (!::ExportImageAsCode(*this, fileName.c_str())) {
-            throw RaylibException(TextFormat("Failed to export Image code to file: %s", fileName.c_str()));
-        }
+    inline bool ExportAsCode(const std::string& fileName) const {
+        return ::ExportImageAsCode(*this, fileName.c_str());
     }
 
     GETTERSETTER(void*, Data, data)

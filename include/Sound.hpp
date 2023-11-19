@@ -170,11 +170,12 @@ class Sound : public ::Sound {
      *
      * @throws raylib::RaylibException Throws if the Sound failed to load.
      */
-    void Load(const std::string& fileName) {
+    bool Load(const std::string& fileName) {
         set(::LoadSound(fileName.c_str()));
-        if (!IsReady()) {
-            throw new RaylibException("Failed to load Sound from file");
-        }
+        //if (!IsReady()) {
+        //    throw new RaylibException("Failed to load Sound from file");
+        //}
+        return IsReady();
     }
 
     /**
@@ -182,11 +183,12 @@ class Sound : public ::Sound {
      *
      * @throws raylib::RaylibException Throws if the Sound failed to load.
      */
-    void Load(const ::Wave& wave) {
+    bool Load(const ::Wave& wave) {
         set(::LoadSoundFromWave(wave));
-        if (!IsReady()) {
-            throw new RaylibException("Failed to load Wave");
-        }
+        //if (!IsReady()) {
+        //    throw new RaylibException("Failed to load Wave");
+        //}
+        return IsReady();
     }
 
     /**

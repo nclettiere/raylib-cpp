@@ -203,12 +203,13 @@ class AudioStream : public ::AudioStream {
      *
      * @throws raylib::RaylibException Throws if the AudioStream failed to load.
      */
-    void Load(unsigned int SampleRate, unsigned int SampleSize, unsigned int Channels = 2) {
+    bool Load(unsigned int SampleRate, unsigned int SampleSize, unsigned int Channels = 2) {
         Unload();
         set(::LoadAudioStream(SampleRate, SampleSize, Channels));
-        if (!IsReady()) {
-            throw RaylibException("Failed to load audio stream");
-        }
+        //if (!IsReady()) {
+        //    throw RaylibException("Failed to load audio stream");
+        //}
+        return IsReady();
     }
 
  protected:

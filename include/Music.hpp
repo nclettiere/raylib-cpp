@@ -195,11 +195,12 @@ class Music : public ::Music {
      *
      * @throws raylib::RaylibException Throws if the music failed to load.
      */
-    void Load(const std::string& fileName) {
+    bool Load(const std::string& fileName) {
         set(::LoadMusicStream(fileName.c_str()));
-        if (!IsReady()) {
-            throw RaylibException(TextFormat("Failed to load Music from file: %s", fileName.c_str()));
-        }
+        //if (!IsReady()) {
+        //    throw RaylibException(TextFormat("Failed to load Music from file: %s", fileName.c_str()));
+        //}
+        return IsReady();
     }
 
     /**
@@ -207,11 +208,12 @@ class Music : public ::Music {
      *
      * @throws raylib::RaylibException Throws if the music failed to load.
      */
-    void Load(const std::string& fileType, unsigned char* data, int dataSize) {
+    bool Load(const std::string& fileType, unsigned char* data, int dataSize) {
         set(::LoadMusicStreamFromMemory(fileType.c_str(), data, dataSize));
-        if (!IsReady()) {
-            throw RaylibException(TextFormat("Failed to load Music from %s file dat", fileType.c_str()));
-        }
+        //if (!IsReady()) {
+        //    throw RaylibException(TextFormat("Failed to load Music from %s file dat", fileType.c_str()));
+        //}
+        return IsReady();
     }
 
     /**

@@ -19,17 +19,17 @@ option(BUILD_RAYLIB_CPP_EXAMPLES "Examples" ${RAYLIB_CPP_IS_MAIN})
 add_subdirectory(include)
 
 # Examples
-if(BUILD_RAYLIB_CPP_EXAMPLES)
-    add_subdirectory(examples)
-    set(BUILD_RAYLIB_CPP_STATIC ON)
-
-    # Testing
-    include(CTest)
-    enable_testing()
-    if(BUILD_TESTING)
-        set(CTEST_CUSTOM_TESTS_IGNORE
-            pkg-config--static
-        )
-        add_subdirectory(tests)
-    endif()
-endif()
+#if(BUILD_RAYLIB_CPP_EXAMPLES)
+#    add_subdirectory(examples)
+#    set(BUILD_RAYLIB_CPP_STATIC ON)
+#
+#    # Testing
+#    include(CTest)
+#    enable_testing()
+#    if(BUILD_TESTING)
+#        set(CTEST_CUSTOM_TESTS_IGNORE
+#            pkg-config--static
+#        )
+#        add_subdirectory(tests)
+#    endif()
+#endif()

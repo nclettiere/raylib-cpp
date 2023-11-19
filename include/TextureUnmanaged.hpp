@@ -101,31 +101,34 @@ class TextureUnmanaged : public ::Texture {
     /**
      * Load texture from image data
      */
-    void Load(const ::Image& image) {
+    bool Load(const ::Image& image) {
         set(::LoadTextureFromImage(image));
-        if (!IsReady()) {
-            throw RaylibException("Failed to load Texture from Image");
-        }
+        //if (!IsReady()) {
+        //    throw RaylibException("Failed to load Texture from Image");
+        //}
+        return IsReady();
     }
 
     /**
      * Load cubemap from image, multiple image cubemap layouts supported
      */
-    void Load(const ::Image& image, int layoutType) {
+    bool Load(const ::Image& image, int layoutType) {
         set(::LoadTextureCubemap(image, layoutType));
-        if (!IsReady()) {
-            throw RaylibException("Failed to load Texture from Cubemap");
-        }
+        //if (!IsReady()) {
+        //    throw RaylibException("Failed to load Texture from Cubemap");
+        //}
+        return IsReady();
     }
 
     /**
      * Load texture from file into GPU memory (VRAM)
      */
-    void Load(const std::string& fileName) {
+    bool Load(const std::string& fileName) {
         set(::LoadTexture(fileName.c_str()));
-        if (!IsReady()) {
-            throw RaylibException("Failed to load Texture from file: " + fileName);
-        }
+        //if (!IsReady()) {
+        //    throw RaylibException("Failed to load Texture from file: " + fileName);
+        //}
+        return IsReady();
     }
 
     /**

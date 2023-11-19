@@ -201,11 +201,12 @@ class Model : public ::Model {
      *
      * @throws raylib::RaylibException Throws if failed to load the Modal.
      */
-    void Load(const std::string& fileName) {
+    bool Load(const std::string& fileName) {
         set(::LoadModel(fileName.c_str()));
-        if (!IsReady()) {
-            throw RaylibException("Failed to load Model from " + fileName);
-        }
+        //if (!IsReady()) {
+        //    throw RaylibException("Failed to load Model from " + fileName);
+        //}
+        return IsReady();
     }
 
     /**
@@ -213,11 +214,12 @@ class Model : public ::Model {
      *
      * @throws raylib::RaylibException Throws if failed to load the Modal.
      */
-    void Load(const ::Mesh& mesh) {
+    bool Load(const ::Mesh& mesh) {
         set(::LoadModelFromMesh(mesh));
-        if (!IsReady()) {
-            throw RaylibException("Failed to load Model from Mesh");
-        }
+        //if (!IsReady()) {
+        //    throw RaylibException("Failed to load Model from Mesh");
+        //}
+        return IsReady();
     }
 
  protected:

@@ -163,11 +163,12 @@ class Font : public ::Font {
      *
      * @see ::LoadFont()
      */
-    void Load(const std::string& fileName) {
+    bool Load(const std::string& fileName) {
         set(::LoadFont(fileName.c_str()));
-        if (!IsReady()) {
-            throw new RaylibException("Failed to load Font with from file: " + fileName);
-        }
+        //if (!IsReady()) {
+        //    throw new RaylibException("Failed to load Font with from file: " + fileName);
+        //}
+        return IsReady();
     }
 
     /**
@@ -180,27 +181,30 @@ class Font : public ::Font {
      *
      * @see ::LoadFontEx()
      */
-    void Load(const std::string& fileName, int fontSize, int* fontChars, int charCount)  {
+    bool Load(const std::string& fileName, int fontSize, int* fontChars, int charCount)  {
         set(::LoadFontEx(fileName.c_str(), fontSize, fontChars, charCount));
-        if (!IsReady()) {
-            throw new RaylibException("Failed to load Font with from file with font size: " + fileName);
-        }
+        //if (!IsReady()) {
+        //    throw new RaylibException("Failed to load Font with from file with font size: " + fileName);
+        //}
+        return IsReady();
     }
 
-    void Load(const ::Image& image, ::Color key, int firstChar) {
+    bool Load(const ::Image& image, ::Color key, int firstChar) {
         set(::LoadFontFromImage(image, key, firstChar));
-        if (!IsReady()) {
-            throw new RaylibException("Failed to load Font with from image");
-        }
+        //if (!IsReady()) {
+        //    throw new RaylibException("Failed to load Font with from image");
+        //}
+        return IsReady();
     }
 
-    void Load(const std::string& fileType, const unsigned char* fileData, int dataSize, int fontSize,
+    bool Load(const std::string& fileType, const unsigned char* fileData, int dataSize, int fontSize,
             int *fontChars, int charsCount)  {
         set(::LoadFontFromMemory(fileType.c_str(), fileData, dataSize, fontSize, fontChars,
             charsCount));
-        if (!IsReady()) {
-            throw new RaylibException("Failed to load Font " + fileType + " with from file data");
-        }
+        //if (!IsReady()) {
+        //    throw new RaylibException("Failed to load Font " + fileType + " with from file data");
+        //}
+        return IsReady();
     }
 
     /**

@@ -187,11 +187,12 @@ class Wave : public ::Wave {
      *
      * @throws raylib::RaylibException Throws if the Wave failed to load.
      */
-    void Load(const std::string& fileName) {
+    bool Load(const std::string& fileName) {
         set(::LoadWave(fileName.c_str()));
-        if (!IsReady()) {
-            throw RaylibException("Failed to load Wave from file: " + fileName);
-        }
+        //if (!IsReady()) {
+        //    throw RaylibException("Failed to load Wave from file: " + fileName);
+        //}
+        return IsReady();
     }
 
     /**
@@ -199,11 +200,12 @@ class Wave : public ::Wave {
      *
      * @throws raylib::RaylibException Throws if the Wave failed to load.
      */
-    void Load(const std::string& fileType, const unsigned char *fileData, int dataSize) {
+    bool Load(const std::string& fileType, const unsigned char *fileData, int dataSize) {
         set(::LoadWaveFromMemory(fileType.c_str(), fileData, dataSize));
-        if (!IsReady()) {
-            throw RaylibException("Failed to load Wave from file data of type: " + fileType);
-        }
+        //if (!IsReady()) {
+        //    throw RaylibException("Failed to load Wave from file data of type: " + fileType);
+        //}
+        return IsReady();
     }
 
     /**

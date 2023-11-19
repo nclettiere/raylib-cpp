@@ -36,11 +36,12 @@ class AudioDevice {
      *
      * @throws raylib::RaylibException Throws if the AudioDevice failed to initialize.
      */
-    inline void Init() {
+    inline bool Init() {
         ::InitAudioDevice();
-        if (!IsReady()) {
-            throw RaylibException("Failed to initialize AudioDevice");
-        }
+        //if (!IsReady()) {
+        //    throw RaylibException("Failed to initialize AudioDevice");
+        //}
+        return IsReady();
     }
 
     /**
